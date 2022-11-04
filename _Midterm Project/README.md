@@ -35,11 +35,25 @@ The target value is the column "stroke", which is binary.
 - Pydantic requirements to be added with the @validator decorators
 
 ## Environment
-- BentoML
+- BentoML. I've written the yaml file. The only file included is the service.py file. The librares included are xgb, sklearn, pandas and pydantic.
+- I've then bentoml built the model. Which is  a compact 455 kb file.
+- Finally, the 'dockerization' of the project: launched docker for desktop (in order to start docker demon), and then bentoml containerize heart_stroke_model:latest - it took 1240 sec!
+- Docker includes a base debian distro (default)
+- Finally re-run it in a docker container
+- BentoML generates the dockerfile locally (in the folder bentos/[bento name]/[tag]/env/docker/Dockerfile )
 
-## Deployment
 
-
+## Deployment to the Cloud
+- A first local test via Docker has been made and confirms the model running.
+- I tried to deploy to Google Cloud Run via bentoctl. 
+- Set up the gcloud account, install gcloud CLI, install terraform and install bentoctl
+- Through a step by step guide, bentoctl creates the files to use [deployment_config.yaml, main.tf, bentoctl.tfvars] [tf files are for terraforming]
+- Via a simple bentoctl build, the tool creates the image and then uploads the image to cloudrun image registry.
+- And then apply the deployment via Terraform. (where the .tf files generated are now put into use.). Also, if there are problems of memory limits imposed by the GCRun environment, it is possible to modify the TF files and re-deploy without need to rebuild the image and reupload it to the repository.
+- The deployment pipeline is really smooth and ready for CI/CD
+- The project has been uploaded and deployed at this address: https://quickstart-cloud-run-service-skes2kiqua-uc.a.run.app/
+ [link][applink]
 
 
    [linkdata]: <https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset?resource=download&select=healthcare-dataset-stroke-data.csv>
+   [applink]: <https://quickstart-cloud-run-service-skes2kiqua-uc.a.run.app/>
