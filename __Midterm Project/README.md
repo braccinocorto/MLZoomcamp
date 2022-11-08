@@ -75,18 +75,23 @@ So, a value above the threshold may lead to a condition which is 'above the aver
 ## Environment
 - To manage the environment dependencies and build the model file, I've used Bento.
 - BentoML. I've created the Bento model file. This is realy easy with the bento package. Move in to the bentofile.yaml then 
+    ```bash
     bentoml build bentofile.yaml
+    ```
 
 I've written the yaml file. The only file of the project included is the service.py file. The librares included are xgb, sklearn, pandas and pydantic. The service.py file loads the bento model previously generated.
 - Run the model locally via BentoML serve command:
+    ```bash
     bentoml serve predict.py:svc
-
+    ```
 And then run your test (manually) in the interface [JSON in, JSON out]:
 
 !(./imgs/bento_serving_locally.jpg "BentoML swagger interface")
 
 - Finally, the 'dockerization' of the project: launched docker for desktop (in order to start docker demon), and then 
+    ```bash
     bentoml containerize heart_stroke_model:latest 
+    ```
 
 it took 1240 sec!
 
@@ -94,7 +99,9 @@ it took 1240 sec!
 
 - The generated Docker includes a base debian distro (default)
 - Finally re-run it locally in via docker container:
+    ```bash
     docker run -it --rm -p 3000:3000 heart_stroke_model:latest serve --production
+    ```
 
 !(./imgs/docker_locally_running.jpg "Docker running the service stack locally")
 
