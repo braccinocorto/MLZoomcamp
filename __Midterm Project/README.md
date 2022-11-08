@@ -99,7 +99,9 @@ it took 1240 sec!
 
 - The generated Docker includes a base debian distro (default)
 - Finally re-run it locally in via docker container:
+    ```bash
     docker run -it --rm -p 3000:3000 heart_stroke_model:latest serve --production
+    ```
 
 !(./imgs/docker_locally_running.jpg "Docker running the service stack locally")
 
