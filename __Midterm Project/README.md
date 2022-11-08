@@ -56,7 +56,7 @@ Hypertension does not appear in the most important features, accoridng to the mo
 
 ![featureimportance](./imgs/features_importance.jpg "Features Importance")
 
-![zoomin](/imgs/features_importance_zoomin.jpg "Zoom in Features Importance")
+![zoomin](./imgs/features_importance_zoomin.jpg "Zoom in Features Importance")
 
 
 ## Exporting the notebook
@@ -80,6 +80,9 @@ So, a value above the threshold may lead to a condition which is 'above the aver
     ```
 
 I've written the yaml file. The only file of the project included is the service.py file. The librares included are xgb, sklearn, pandas and pydantic. The service.py file loads the bento model previously generated.
+
+![BentoML built](./imgs/bento_built.jpg "ta-dah! BentoML in all its awesomeness")
+
 - Run the model locally via BentoML serve command:
     ```bash
     bentoml serve predict.py:svc
@@ -95,7 +98,6 @@ And then run your test (manually) in the interface [JSON in, JSON out]:
 
 it took 1240 sec!
 
-![BentoML built](./imgs/bento_built.jpg "BentoML in all its awesomeness")
 
 - The generated Docker includes a base debian distro (default)
 - Finally re-run it locally in via docker container:
