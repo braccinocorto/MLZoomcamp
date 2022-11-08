@@ -54,9 +54,9 @@ Through xgb.plot_tree and xgb.plot_importance, we find a confirmation of the ini
 The three main features are avg_glucoselevel, bmi and age.
 Hypertension does not appear in the most important features, accoridng to the model.
 
-!(./imgs/features_importance.jpg "Features Importance")
+!(/imgs/features_importance.jpg "Features Importance")
 
-!(./imgs/features_importance_zoomin.jpg "Zoom in Features Importance")
+!(/imgs/features_importance_zoomin.jpg "Zoom in Features Importance")
 
 
 ## Exporting the notebook
