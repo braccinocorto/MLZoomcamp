@@ -11,7 +11,6 @@ model_runner = model_ref.to_runner()
 
 svc = bentoml.Service("heart_stroke_model", runners=[model_runner])
 
-#@svc.api(input=NumpyNdarray(), output=NumpyNdarray())
 from pydantic import BaseModel
 
 class HeartStrokeApp(BaseModel):
@@ -25,7 +24,6 @@ class HeartStrokeApp(BaseModel):
     avg_glucose_level: float
     bmi: float
     smoking_status: str
-
 
 
 @svc.api(input=JSON(pydantic_model= HeartStrokeApp), output=JSON())
