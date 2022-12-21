@@ -12,18 +12,18 @@ There are mainly 3 types of playlist on Spotify (and in almost all the streaming
 
 Algo playlist create a list of tracks to be included in the playlist based on an algorithm created by Spotify. This analyzes the user's taste and listening history, in order to provide a tailor made playlist that best fits his/her tastes. These playlists are 'timed' (in a particular day, Spotify creates the playlist with the most recent releases that are good for your listening history).
 
-![algoritmicplaylists](./img/algo_playlist.jpg.jpg "Algoritmic Playlists")
+![algoritmicplaylists](./img/algo_playlist.jpg "Algoritmic Playlists")
 
 Editorial playlist are the most sought after, as these are human-edited (by people working for Spotify) and are public playlist with large following.
 These are well featured on the homepage(s) of the users. nd are not-user tailored. Kinda the new radio.
 These are the objective of our study.
 
-![editorialplaylists](./img/editorial_playlist.jpg.jpg "Editorial Playlists")
+![editorialplaylists](./img/editorial_playlist.jpg "Editorial Playlists")
 
 
 User's Playlist are made by users for themselves and/or other like-minded users that can find them searching keywords. The audience is quite limited (except for play listing houses - now property of the majors [aka Filtrr, Digster, Topsify ] . These are potentially interesting fo our use case. Unfortunately due to interest conflict, it will probably never be featured in these playlist unless you're signed to a major or one of their subsidiaries or controlled labels.
 
-![usersplaylists](./img/users_playlist.jpg.jpg "User Playlists")
+![usersplaylists](./img/users_playlist.jpg "User Playlists")
 
 
 What we're trying to achieve: 
