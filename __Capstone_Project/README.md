@@ -26,7 +26,7 @@ User's Playlist are made by users for themselves and/or other like-minded users 
 ![usersplaylists](./img/users_playlist.jpg "User Playlists")
 
 
-What we're trying to achieve: 
+## What we're trying to achieve. 
 when you song is ingested into spotify, it gets algorithmically analyzed. Every track has its own "fingerprint": both on the classical stage, and one more in-depth analysis on the musical side.
 All these analysis are available via Spotify API. 
 We're going to download (thanks spotipy!) and analyze the content of the most followed playlists, and - given a track published on Spotify, the model will find which among these playlist is the best fit for the track. Then, this can be pitched to the editorial team of Spotify. This is helpful, as each playlist has a team, and it's not useful to pitch a rock song to a Latino playlist. 
@@ -145,6 +145,9 @@ I had to include sciiti-learn, as the DictVectorizer comes from that module.
 bentoml build
 ```
 This finally builds the Bento.
+
+![builtwithbento](./img/bento_build.jpg "Build tha Bento!")
+
 You can then serve it with: 
 
 ```bash
@@ -174,12 +177,20 @@ With
 ```bash
 bentoml containerize spotify_playlist_model:latest
 ```
+
+![containerizationwithbento](./img/containerize_with_bento.jpg "Local Dockerization via Bento")
+
+
 Bento builds the local docker version of the project.
 You can then run it locally.
 ```bash
 docker run -it --rm -p 3000:3000 spotify_playlist_model:ud6uteuap63wzlf4 serve --production
 ```
 And test it.
+
+![localdockerdeployment](./img/local_docker_deployment.jpg "Local Docker Deployment")
+
+
 
 Deploy to the cloud:
 I deployed via bentoctl, already used in the midterm project.
