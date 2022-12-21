@@ -21,7 +21,7 @@ These are the objective of our study.
 ![editorialplaylists](./img/editorial_playlist.jpg "Editorial Playlists")
 
 
-User's Playlist are made by users for themselves and/or other like-minded users that can find them searching keywords. The audience is quite limited (except for play listing houses - now property of the majors [aka Filtrr, Digster, Topsify ] . These are potentially interesting fo our use case. Unfortunately due to interest conflict, it will probably never be featured in these playlist unless you're signed to a major or one of their subsidiaries or controlled labels.
+User's Playlist are made by users for themselves and/or other like-minded users that can find them searching keywords. The audience is quite limited (except for playlisting houses - now property of the majors [aka Filtrr, Digster, Topsify ]. These are potentially interesting fo our use case. 
 The model we develop and its results could be used for this kind of playlists. When a playlist manager (outside of Spotify) has to decide which of its playlists best fit for the song to add, s/he could use the tool to help in the choice.
 
 ![usersplaylists](./img/users_playlist.jpg "User Playlists")
