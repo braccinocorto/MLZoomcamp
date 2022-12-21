@@ -58,8 +58,10 @@ So, modes are major/minor, keys are 12. (as the semitones)
 [notebook: 00_Spotify_Data_download.ipynb]
 Via Spotipy (a great library in python used to access the Spotify webapi), we access and download  the data of the songs included in the playlists.
 The playlists we've included are listed in the playlist_name.json file.
+The datafile.csv we get includes all the columns (and even more than the one we need).
+In this file we included the artist and track name. These have been then removed from the Pandas dataframe we use when training the models. This feature could infere a correlation with popularity (due to marketing forces external to the song itself). So the training will be on song characteristics only.
 
-These are the Top 50 most popular playlists on Spotify, according to https://www.chosic.com/best-spotify-playlists/ .
+The playlist we downloaded data from are the Top 50 most popular playlists on Spotify, according to https://www.chosic.com/best-spotify-playlists/ .
 [link][playlistlink]
 These are almost-editorial playlists. (Almost in the sense that some of them are generated using data from Spotify's backend) 
 But these are not algorithmic playlist, meaning these are available to all users, not user-customized by Spotify.
