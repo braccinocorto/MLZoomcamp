@@ -12,18 +12,18 @@ There are mainly 3 types of playlist on Spotify (and in almost all the streaming
 
 Algo playlist create a list of tracks to be included in the playlist based on an algorithm created by Spotify. This analyzes the user's taste and listening history, in order to provide a tailor made playlist that best fits his/her tastes. These playlists are 'timed' (in a particular day, Spotify creates the playlist with the most recent releases that are good for your listening history).
 
-![algoritmicplaylists](./imgs/algo_playlist.jpg.jpg "Algoritmic Playlists")
+![algoritmicplaylists](./img/algo_playlist.jpg.jpg "Algoritmic Playlists")
 
 Editorial playlist are the most sought after, as these are human-edited (by people working for Spotify) and are public playlist with large following.
 These are well featured on the homepage(s) of the users. nd are not-user tailored. Kinda the new radio.
 These are the objective of our study.
 
-![editorialplaylists](./imgs/editorial_playlist.jpg.jpg "Editorial Playlists")
+![editorialplaylists](./img/editorial_playlist.jpg.jpg "Editorial Playlists")
 
 
 User's Playlist are made by users for themselves and/or other like-minded users that can find them searching keywords. The audience is quite limited (except for play listing houses - now property of the majors [aka Filtrr, Digster, Topsify ] . These are potentially interesting fo our use case. Unfortunately due to interest conflict, it will probably never be featured in these playlist unless you're signed to a major or one of their subsidiaries or controlled labels.
 
-![usersplaylists](./imgs/users_playlist.jpg.jpg "User Playlists")
+![usersplaylists](./img/users_playlist.jpg.jpg "User Playlists")
 
 
 What we're trying to achieve: 
@@ -34,9 +34,9 @@ The model can be fine tuned for the best fitting among the "same genre" playlist
 This same tool could be used by companies that are in the play listing business (providing exposure to tracks in their popular playlists. 
 Here 2 examples of how an artist' plays are split among different kind of playlists:
 
-![split1playlists](./imgs/playlist_split1.jpg "Split Plays by Playlist Type - Artist 1")
+![split1playlists](./img/playlist_split1.jpg "Split Plays by Playlist Type - Artist 1")
 
-![split2playlists](./imgs/playlist_split2.jpg "Split Plays by Playlist Type - Artist 2")
+![split2playlists](./img/playlist_split2.jpg "Split Plays by Playlist Type - Artist 2")
 
 
 ## It's a multiclass-classification problem. 
@@ -52,7 +52,6 @@ the Playlist we downloaded and analyzed are the most streamed in the western wor
 So, modes are major/minor, keys are 12. (as the semitones)
 
 ## Data acquisition
-================
 [notebook: 00_Spotify_Data_download.ipynb]
 Via Spotipy (a great library in python used to access the Spotify webapi), we access and download  the data of the songs included in the playlists.
 The playlists we've included are listed in the playlist_name.json file.
@@ -80,7 +79,6 @@ We'll try to find out if there is any correlation between the tracks in a single
 And then, given a "non-play listed" track, find which of the 50 analyzed playlist is the best match, according to the details of the track.
 
 ## EDA
-===
 [notebook 01_EDA.ipynb]
 We did the analysis of the collected data.
 Some musical considerations regarding the mode (major/minor) of the tracks collected. And their correlation with some kind of playlists.
@@ -90,8 +88,7 @@ What we'll try to achieve, will be a "mega mean" for each playlist, so that, giv
 Some more comments and explanation are found in the EDA notebook itself.
 
 
-Modeling, selection of the best model.
-======================================
+## Modeling, selection of the best model.
 [notebook 02_Model Training.ipynb]
 The problem is a multi class classification one.
 With a target of 50 classes.
