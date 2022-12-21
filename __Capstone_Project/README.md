@@ -204,13 +204,16 @@ bentoctl build -b spotify_playlist_model:latest -f deployment_config.yaml
 ```
 (and having previously created a project in GCloud Run and enabled the API on the container registry)
 it starts uploading to the container registry the Docker image file (built locally with BentoML).
+
+Terraform will deploy the container in production.
+
 ```bash
 terraform init
 
 terraform apply -var-file=bentoctl.tfvars -auto-approve
 ```
-[bentoctl.tfvars has been interactively created]
-- TIP: never use _ (underscore) in the names of your project/deployment. 
+The bentoctl.tfvars has been interactively created via CLI, and contains the details needed for the actual cloud deployment of the image pushed to the registry.
+- Useful tip: never use _ (underscore) in the names of your project/deployment. 
 Google CloudRun doesn't like it.
 
 And...(drumroll)
