@@ -157,8 +157,8 @@ bentoml serve predict.py:svc
 And you can test it locally on http://0.0.0.0:3000
 
 I've found 2 hurdles:
-1 - the BentoML service is not scriptable - this makes sense, as it is thought for great volumes of batch processing
-2 - we can not assign item value (which would have substituted the release_date with the counting_days variable in the input dict). 
+- 1 - the BentoML service is not scriptable - this makes sense, as it is thought for great volumes of batch processing
+- 2 - we can not assign item value (which would have substituted the release_date with the counting_days variable in the input dict). 
 
 This is due to the calculation of the days of distance from the current date and the original release date of the songs.
 This was a feature we used in the EDA and the test/predict analysis.
@@ -207,10 +207,10 @@ terraform init
 terraform apply -var-file=bentoctl.tfvars -auto-approve
 ```
 [bentoctl.tfvars has been interactively created]
-TIP: never use _ (underscore) in te names of your project/deployment. 
+- TIP: never use _ (underscore) in the names of your project/deployment. 
 Google CloudRun doesn't like it.
 
-And...
+And...(drumroll)
 
 https://spotify-playlist-matcher-cloud-run-service-2q3fby7qsq-od.a.run.app
 [deploylink]
