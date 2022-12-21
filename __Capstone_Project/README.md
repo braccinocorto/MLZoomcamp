@@ -1,7 +1,7 @@
 # Spotify Playlist Match
 
 ## Project Description
-We aim to find if a song is suitable for a playlist in spotify, and -among a list of playlist - where does it fit best.
+We aim to find if a song is suitable for a playlist in Spotify, and -among a list of playlist - where does it fit best.
 
 Spotify playlisting is a way for an artist to get exposure and have his/her repertoire listened to.
 With over 100k new tracks uploaded daily on Spotify, being featured in a playlist is extremely helpful to emerge. 
@@ -31,7 +31,7 @@ The model we develop and its results could be used for this kind of playlists. W
 
 
 ## What we're trying to achieve. 
-when you song is ingested into spotify, it gets algorithmically analyzed. Every track has its own "fingerprint": both on the classical stage, and one more in-depth analysis on the musical side.
+When your song is ingested into Spotify, it gets algorithmically analyzed. Every track has its own "fingerprint": both on the basic stage, and one more in-depth analysis on the musical side.
 All these analysis are available via Spotify API. 
 We're going to download (thanks spotipy!) and analyze the content of the most followed playlists, and - given a track published on Spotify, the model will find which among these playlist is the best fit for the track. Then, this can be pitched to the editorial team of Spotify. 
 The model can be fine tuned for the best fitting among the "same genre" playlist, for example (selecting a list of playlists more genre narrowed). 
@@ -60,7 +60,8 @@ So, modes are major/minor, keys are 12. (as the semitones)
 
 ## Data acquisition
 [notebook: 00_Spotify_Data_download.ipynb]
-Via Spotipy (a great library in python used to access the Spotify webapi), we access and download  the data of the songs included in the playlists.
+Via spotipy (a great library in python used to access the Spotify webapi), we access and download  the data of the songs included in the playlists. 
+To access Spotify API, you'll need a client/secret key you can get from Spotify itself.
 The playlists we've included are listed in the playlist_name.json file.
 The datafile.csv we get includes all the columns (and even more than the one we need).
 In this file we included the artist and track name. These have been then removed from the Pandas dataframe we use when training the models. This feature could infere a correlation with popularity (due to marketing forces external to the song itself). So the training will be on song characteristics only.
