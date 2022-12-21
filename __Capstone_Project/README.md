@@ -193,7 +193,7 @@ And test it.
 
 
 
->Deploy to the cloud
+>Deploy to the cloud.
 I deployed via bentoctl, already used in the midterm project.
 Via the interactive menu, bentoctl creates a terraform file (a yaml file detailing the needs of the project: memory, instances, cpu).
 Then with 
