@@ -29,9 +29,10 @@ User's Playlist are made by users for themselves and/or other like-minded users 
 ## What we're trying to achieve. 
 when you song is ingested into spotify, it gets algorithmically analyzed. Every track has its own "fingerprint": both on the classical stage, and one more in-depth analysis on the musical side.
 All these analysis are available via Spotify API. 
-We're going to download (thanks spotipy!) and analyze the content of the most followed playlists, and - given a track published on Spotify, the model will find which among these playlist is the best fit for the track. Then, this can be pitched to the editorial team of Spotify. This is helpful, as each playlist has a team, and it's not useful to pitch a rock song to a Latino playlist. 
-The model can be fine tuned for the best fitting among the "same genre" playlist, for example. 
-This same tool could be used by companies that are in the play listing business (providing exposure to tracks in their popular playlists. 
+We're going to download (thanks spotipy!) and analyze the content of the most followed playlists, and - given a track published on Spotify, the model will find which among these playlist is the best fit for the track. Then, this can be pitched to the editorial team of Spotify. 
+The model can be fine tuned for the best fitting among the "same genre" playlist, for example (selecting a list of playlists more genre narrowed). 
+This same tool could be used by companies that are in the playlisting business (providing exposure to tracks in their popular playlists), so that they can find their 'best match' among the playlist they manage. 
+Being on the right playlist for an artist is important.
 Here 2 examples of how an artist' plays are split among different kind of playlists:
 
 ![split1playlists](./img/playlist_split1.jpg "Split Plays by Playlist Type - Artist 1")
@@ -46,6 +47,8 @@ Here 2 examples of how an artist' plays are split among different kind of playli
 Note that these playlist change regularly (weekly), so the model should be retrained frequently.
 Or at least when some of the playlist gets changed (tracks in/tracks out).
 Also, as we'll see, one feature (days from release date) is a changing feature, and the model should be retrained weekly.
+
+The input is a json dictionary. The next step would be to get these details automatically from Spotify, compile the dictionary, and then send the request to the inference service. We're analyzing the inference service only.
 
 General caveat (warning):
 the Playlist we downloaded and analyzed are the most streamed in the western world. The representation of the music data collected is limited to the western music style. Note that BTS - a k-Pop act - also works in the "western" music. The non-western music has not been tracked. So musical consideration that will follow take into consideration the western world music system. No arabic-mode or other type of analysis.
@@ -76,7 +79,7 @@ So, this first analysis will involve 'only' the audio details of the track, and 
 Note that "genre" is not included in the collected data. Spotify is "genre agnostic", at least at track level, and keeping up with the evolving scenario inside each niche is really hard (see for example Beatport - a niche digital music store/service provider centered around electronic music, which has to recalibrate genre every 2/3 years to accomodate new waves of music in a sub-genre of its niche). 
 
 We'll try to find out if there is any correlation between the tracks in a single playlist.
-And then, given a "non-play listed" track, find which of the 50 analyzed playlist is the best match, according to the details of the track.
+And then, given a "non-playlisted" track, find which of the 50 analyzed playlist is the best match, according to the details of the track.
 
 ## EDA
 [notebook 01_EDA.ipynb]
@@ -104,8 +107,7 @@ For each of them the accuracy and AUC score (multi class with ovr criteria) is c
 In the end, I've chosen XGBoost as it's probably the best for tabular data and it's fully compatible with BentoML.
 This time, we'll deploy it with a multi class classification problem.
 
-Train the definitive model.
-===========================
+## Train the definitive model.
 [train.py]
 I've taken out the script from the Notebook (manually), and adapted a little bit.
 I've dumped the playlist name to a json file (that will be read at test time).
@@ -127,8 +129,7 @@ In the Data Extraction notebook there's the skeleton of how to get the single da
 In Sample songs.txt you can find the values to copy & paste in the test.py file, in order to receive the predicted "best matching" playlist, according to the songs characteristical data.
 
 
-Deployment - Local and in the Cloud
-===================================
+## Deployment - Local and in the Cloud
 [predict.py]
 [bento.yaml]
 
