@@ -134,14 +134,14 @@ In Sample songs.txt you can find the values to copy & paste in the test.py file,
 [bento.yaml]
 
 Via BentoML, I've built the model.
-1 - create the predict.py file, which is the interface Bento will expose.
+- 1 - create the predict.py file, which is the interface Bento will expose.
 In this, via Bento, he recalls the latest saved model and loads the custom objects (DictVectorizer).
-2 - define the pydantic interface to expose (the data we'll paste in the interface)
-3 - define the service (what it gets, what it returns)
-4 - write the bento.yaml [in the development directory] file, which contains the project structure and dependencies (xgboost, pydantic, numpy and scikit-learn)
+- 2 - define the pydantic interface to expose (the data we'll paste in the interface)
+- 3 - define the service (what it gets, what it returns)
+- 4 - write the bento.yaml [in the development directory] file, which contains the project structure and dependencies (xgboost, pydantic, numpy and scikit-learn)
 I had to include sciiti-learn, as the DictVectorizer comes from that module.
-5 - include all the files - including the playlist_name.json file. This is used at runtime in order to provide a human readable result.
-6 - 
+- 5 - include all the files - including the playlist_name.json file. This is used at runtime in order to provide a human readable result.
+- 6 - 
 ```bash
 bentoml build
 ```
@@ -158,8 +158,8 @@ bentoml serve predict.py:svc
 And you can test it locally on http://0.0.0.0:3000
 
 I've found 2 hurdles:
-- 1 - the BentoML service is not scriptable - this makes sense, as it is thought for great volumes of batch processing
-- 2 - we can not assign item value (which would have substituted the release_date with the counting_days variable in the input dict). 
+- A - the BentoML service is not scriptable - this makes sense, as it is thought for great volumes of batch processing
+- B - we can not assign item value (which would have substituted the release_date with the counting_days variable in the input dict). 
 
 This is due to the calculation of the days of distance from the current date and the original release date of the songs.
 This was a feature we used in the EDA and the test/predict analysis.
@@ -173,7 +173,7 @@ In the sample_songs_for_BentoML.txt instead of 'release_date' the value inserted
 As you can see, the pydantic declaration and the framework we are giving to BentoML has changed, but the model receives now a data dict (JSON) that is compatible with what has been trained.
 
 
-Local deployment.
+>Local deployment.
 With  
 ```bash
 bentoml containerize spotify_playlist_model:latest
@@ -193,7 +193,7 @@ And test it.
 
 
 
-Deploy to the cloud:
+>Deploy to the cloud
 I deployed via bentoctl, already used in the midterm project.
 Via the interactive menu, bentoctl creates a terraform file (a yaml file detailing the needs of the project: memory, instances, cpu).
 Then with 
