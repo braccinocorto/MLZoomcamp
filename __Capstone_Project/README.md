@@ -174,6 +174,7 @@ As you can see, the pydantic declaration and the framework we are giving to Bent
 
 
 >Local deployment.
+
 With  
 ```bash
 bentoml containerize spotify_playlist_model:latest
@@ -194,6 +195,7 @@ And test it.
 
 
 >Deploy to the cloud.
+
 I deployed via bentoctl, already used in the midterm project.
 Via the interactive menu, bentoctl creates a terraform file (a yaml file detailing the needs of the project: memory, instances, cpu).
 Then with 
