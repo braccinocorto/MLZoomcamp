@@ -10,34 +10,48 @@ There are mainly 3 types of playlist on Spotify (and in almost all the streaming
 - Editorial Playlist
 - Users Playlist
 
-Algo playlist create a list of tracks to be included in the playlist based on an algorithm created by Spotify. This analyzes the user's taste and listening history, in order to provide a tailor made playlist that best fits his tastes. These are 'timed' (in a particular day, the playlist with the most recent releases that are good for your listening history).
+Algo playlist create a list of tracks to be included in the playlist based on an algorithm created by Spotify. This analyzes the user's taste and listening history, in order to provide a tailor made playlist that best fits his/her tastes. These playlists are 'timed' (in a particular day, Spotify creates the playlist with the most recent releases that are good for your listening history).
+
+![algoritmicplaylists](./imgs/algo_playlist.jpg.jpg "Algoritmic Playlists")
 
 Editorial playlist are the most sought after, as these are human-edited (by people working for Spotify) and are public playlist with large following.
 These are well featured on the homepage(s) of the users. nd are not-user tailored. Kinda the new radio.
 These are the objective of our study.
 
+![editorialplaylists](./imgs/editorial_playlist.jpg.jpg "Editorial Playlists")
+
+
 User's Playlist are made by users for themselves and/or other like-minded users that can find them searching keywords. The audience is quite limited (except for play listing houses - now property of the majors [aka Filtrr, Digster, Topsify ] . These are potentially interesting fo our use case. Unfortunately due to interest conflict, it will probably never be featured in these playlist unless you're signed to a major or one of their subsidiaries or controlled labels.
+
+![usersplaylists](./imgs/users_playlist.jpg.jpg "User Playlists")
 
 
 What we're trying to achieve: 
 when you song is ingested into spotify, it gets algorithmically analyzed. Every track has its own "fingerprint": both on the classical stage, and one more in-depth analysis on the musical side.
 All these analysis are available via Spotify API. 
 We're going to download (thanks spotipy!) and analyze the content of the most followed playlists, and - given a track published on Spotify, the model will find which among these playlist is the best fit for the track. Then, this can be pitched to the editorial team of Spotify. This is helpful, as each playlist has a team, and it's not useful to pitch a rock song to a Latino playlist. 
-The model can be fine tuned for the best fitting among the "same genre" playlist, for example.
+The model can be fine tuned for the best fitting among the "same genre" playlist, for example. 
+This same tool could be used by companies that are in the play listing business (providing exposure to tracks in their popular playlists. 
+Here 2 examples of how an artist' plays are split among different kind of playlists:
 
-It's a multiclass-classification problem. 
-Input: a Spotify song details
-Output: a Spotify playlist name among the list of playlist analyzed.
+![split1playlists](./imgs/playlist_split1.jpg "Split Plays by Playlist Type - Artist 1")
 
-Note that these playlist change regularly (weekly), so the model should be retrained each week.
+![split2playlists](./imgs/playlist_split2.jpg "Split Plays by Playlist Type - Artist 2")
 
+
+## It's a multiclass-classification problem. 
+- Input: a Spotify song details
+- Output: a Spotify playlist name among the list of playlist analyzed.
+
+Note that these playlist change regularly (weekly), so the model should be retrained frequently.
+Or at least when some of the playlist gets changed (tracks in/tracks out).
 Also, as we'll see, one feature (days from release date) is a changing feature, and the model should be retrained weekly.
 
-General caveat:
-the Playlist are the most streamed in the western world. The representation of the music data collected is limited to the western music style. Note that BTS - a k-Pop act - also works in the "western" music. The non-western music has not been traced (due to a low popularity). So musical consideration that will follow take into consideration the western world music system. No arabic-mode or other type of analysis.
+General caveat (warning):
+the Playlist we downloaded and analyzed are the most streamed in the western world. The representation of the music data collected is limited to the western music style. Note that BTS - a k-Pop act - also works in the "western" music. The non-western music has not been tracked. So musical consideration that will follow take into consideration the western world music system. No arabic-mode or other type of analysis.
 So, modes are major/minor, keys are 12. (as the semitones)
 
-##Data acquisition
+## Data acquisition
 ================
 [notebook: 00_Spotify_Data_download.ipynb]
 Via Spotipy (a great library in python used to access the Spotify webapi), we access and download  the data of the songs included in the playlists.
@@ -60,12 +74,12 @@ If we had to conduct a sentiment analysis involving lyrics, we'd have to interac
  
 So, this first analysis will involve 'only' the audio details of the track, and some feature engineering as to detect the period of release of a track, and its 'ever green' status, as some of the most followed playlists involve a "decade" mood ("All out 2000s", "All out 80s").
 
-Note that "genre" is not included in the collected data. Spotify is "genre agnostic", and keeping track of the evolving scenario inside each niche is really hard (see for example Beatport - a niche digital music store/service provider centered around electronic music, which has to recalibrate genre every 2/3 years to accomodate new waves of music in a sub-genre). 
+Note that "genre" is not included in the collected data. Spotify is "genre agnostic", at least at track level, and keeping up with the evolving scenario inside each niche is really hard (see for example Beatport - a niche digital music store/service provider centered around electronic music, which has to recalibrate genre every 2/3 years to accomodate new waves of music in a sub-genre of its niche). 
 
 We'll try to find out if there is any correlation between the tracks in a single playlist.
 And then, given a "non-play listed" track, find which of the 50 analyzed playlist is the best match, according to the details of the track.
 
-##EDA
+## EDA
 ===
 [notebook 01_EDA.ipynb]
 We did the analysis of the collected data.
@@ -191,8 +205,10 @@ Google CloudRun doesn't like it.
 And...
 
 https://spotify-playlist-matcher-cloud-run-service-2q3fby7qsq-od.a.run.app
-[link][deploylink]
+[deploylink]
+
 voilà!
+App deployed to GoogleCloudRun!
 
 
 
